@@ -82,21 +82,32 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <!-- Laravel -->
-                    ini Toko Roti
+                    {{ ucfirst($jenis) }} {{ ucfirst($tambahan) }}
                 </div>
 
-                <div class="links">
-                    <a href="menu">Menu</a>
-                    <!-- <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a> -->
-                </div>
+                @if($tambahan == 'coklat')
+                    <img src="{{ asset('img/roti_coklat.jfif') }}" alt="Roti Coklat" style="height: 250px;">
+                    <p>Deskripsi :</p>
+                    <p>Roti nikmat yang dibalut dengan dark chocolate</p>
+                @elseif($tambahan == 'keju')
+                    <img src="{{ asset('img/roti_keju.jpg') }}" alt="Roti Keju" style="height: 250px;">
+                    <p>Deskripsi :</p>
+                    <p>Roti nikmat berisikan keju mozarella di dalamnya serta ditaburi keju chedar diatasnya</p>
+                @elseif($tambahan == 'sosis')
+                    <img src="{{ asset('img/roti_sosis.jpg') }}" alt="Roti Sosis" style="height: 250px;">
+                    <p>Deskripsi :</p>
+                    <p>Roti nikmat berisikan sosis lalu ditaburi keju chedar tidak lupa sedikit
+                        <br>  siraman saus tomat serta taburan daun parsley untuk menambah citarasanya.
+                        <br> <br> Terdapat 2 varian yaitu Sosis Ayam dan Sosis Sapi.
+                    </p>
+                @endif
+
+                <p>
+                    <br>
+                    <div class="links">
+                        <a href="{{ URL::previous() }}">Back to Menu</a>
+                    </div>
+                </p>
             </div>
         </div>
     </body>

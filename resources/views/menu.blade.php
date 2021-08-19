@@ -82,21 +82,21 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <!-- Laravel -->
-                    ini Toko Roti
+                    Daftar Menu
                 </div>
 
                 <div class="links">
-                    <a href="menu">Menu</a>
-                    <!-- <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a> -->
+                    @foreach($tambahan as $t)
+                        <a href="menu/roti/{{ $t }}">Roti {{ $t }}</a>
+                    @endforeach
                 </div>
+
+                <p>
+                    <br>
+                    <div class="links">
+                        <a href="/">Back to Home</a>
+                    </div>
+                </p>
             </div>
         </div>
     </body>
