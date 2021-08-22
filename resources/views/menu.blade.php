@@ -87,7 +87,31 @@
 
                 <div class="links">
                     @foreach($tambahan as $t)
-                        <a href="menu/roti/{{ $t }}">Roti {{ $t }}</a>
+                        @if($t == 'coklat')
+                            <div>
+                                <p>
+                                    <img src="{{ asset('img/roti_coklat.jfif') }}" alt="Roti Coklat" style="height: 100px;">
+                                    <br>
+                                    <a href="menu/roti/{{ $t }}">Roti {{ $t }}</a>
+                                </p>
+                            </div>
+                        @elseif($t== 'keju')
+                            <div>
+                                <p>
+                                    <img src="{{ asset('img/roti_keju.jpg') }}" alt="Roti Keju" style="height: 100px;">
+                                    <br>
+                                    <a href="menu/roti/{{ $t }}">Roti {{ $t }}</a>
+                                </p>
+                            </div>
+                        @elseif($t == 'sosis')
+                            <div>
+                                <p>
+                                    <img src="{{ asset('img/roti_sosis.jpg') }}" alt="Roti Sosis" style="height: 100px;">
+                                    <br>
+                                    <a href="menu/roti/{{ $t }}">Roti {{ $t }}</a>
+                                </p>
+                            </div>
+                        @endif
                     @endforeach
                 </div>
 
