@@ -26,6 +26,13 @@ Route::get('/menu/{jenis?}/{tambahan?}', function ($jenis = 'roti', $tambahan = 
     return view('roti', ['jenis' => $jenis, 'tambahan' => $tambahan]);
 });
 
+Route::resource('products', 'ProductController');
+Route::resource('categories', 'CategoryController');
+
+// Route::resource('/produk', 'ProdukController');
+
+// Route::get('/produk', 'ProdukController@index');
+
 // Route::get('/helloworld', function () {
 //     return 'Hello World, Pak Dosen';
 // });

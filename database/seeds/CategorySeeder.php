@@ -22,5 +22,17 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             'nama' => 'Sosis',
         ]);
+
+        DB::table('categories')->insert([
+            'nama' => 'Donat',
+        ]);
+
+        DB::table('categories')->insert([
+            'nama' => 'Sus',
+        ]);
+
+        DB::table('categories')->insert([
+            'nama' => 'Isi',
+        ]);
     }
 }

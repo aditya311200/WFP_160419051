@@ -25,5 +25,20 @@ class SupplierSeeder extends Seeder
             'nama' => 'PT.Sosis',
             'alamat' => 'Jalan Sosis',
         ]);
+
+        DB::table('suppliers')->insert([
+            'nama' => 'PT.Donat',
+            'alamat' => 'Jalan Donat',
+        ]);
+
+        DB::table('suppliers')->insert([
+            'nama' => 'PT.Sus',
+            'alamat' => 'Jalan Sus',
+        ]);
+
+        DB::table('suppliers')->insert([
+            'nama' => 'PT.Isi',
+            'alamat' => 'Jalan Isi',
+        ]);
     }
 }

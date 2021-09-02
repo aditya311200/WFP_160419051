@@ -90,7 +90,7 @@
                         @if($t == 'coklat')
                             <div>
                                 <p>
-                                    <img src="{{ asset('img/roti_coklat.jfif') }}" alt="Roti Coklat" style="height: 100px;">
+                                    <img src="{{ asset('images/roti_coklat.jfif') }}" alt="Roti Coklat" style="height: 100px;">
                                     <br>
                                     <a href="menu/roti/{{ $t }}">Roti {{ $t }}</a>
                                 </p>
@@ -98,7 +98,7 @@
                         @elseif($t== 'keju')
                             <div>
                                 <p>
-                                    <img src="{{ asset('img/roti_keju.jpg') }}" alt="Roti Keju" style="height: 100px;">
+                                    <img src="{{ asset('images/roti_keju.jpg') }}" alt="Roti Keju" style="height: 100px;">
                                     <br>
                                     <a href="menu/roti/{{ $t }}">Roti {{ $t }}</a>
                                 </p>
@@ -106,7 +106,7 @@
                         @elseif($t == 'sosis')
                             <div>
                                 <p>
-                                    <img src="{{ asset('img/roti_sosis.jpg') }}" alt="Roti Sosis" style="height: 100px;">
+                                    <img src="{{ asset('images/roti_sosis.jpg') }}" alt="Roti Sosis" style="height: 100px;">
                                     <br>
                                     <a href="menu/roti/{{ $t }}">Roti {{ $t }}</a>
                                 </p>

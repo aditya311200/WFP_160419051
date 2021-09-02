@@ -86,15 +86,15 @@
                 </div>
 
                 @if($tambahan == 'coklat')
-                    <img src="{{ asset('img/roti_coklat.jfif') }}" alt="Roti Coklat" style="height: 250px;">
+                    <img src="{{ asset('images/roti_coklat.jfif') }}" alt="Roti Coklat" style="height: 250px;">
                     <p>Deskripsi :</p>
                     <p>Roti nikmat yang dibalut dengan dark chocolate</p>
                 @elseif($tambahan == 'keju')
-                    <img src="{{ asset('img/roti_keju.jpg') }}" alt="Roti Keju" style="height: 250px;">
+                    <img src="{{ asset('images/roti_keju.jpg') }}" alt="Roti Keju" style="height: 250px;">
                     <p>Deskripsi :</p>
                     <p>Roti nikmat berisikan keju mozarella di dalamnya serta ditaburi keju chedar diatasnya</p>
                 @elseif($tambahan == 'sosis')
-                    <img src="{{ asset('img/roti_sosis.jpg') }}" alt="Roti Sosis" style="height: 250px;">
+                    <img src="{{ asset('images/roti_sosis.jpg') }}" alt="Roti Sosis" style="height: 250px;">
                     <p>Deskripsi :</p>
                     <p>Roti nikmat berisikan sosis lalu ditaburi keju chedar tidak lupa sedikit
                         <br>  siraman saus tomat serta taburan daun parsley untuk menambah citarasanya.
