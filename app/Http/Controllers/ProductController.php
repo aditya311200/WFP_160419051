@@ -62,7 +62,13 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        // sintaks untuk mengetahui isi dari variabel yang menjadi parameter
+        // dd($product);
+        // dengan menggunakan parameter Product diatas, maka otomatis akan dibuat querynya
+        // seperti "SELECT * FROM products WHERE id = x:
+
+        // $data = $product;
+        return view('product.show', compact('product'));
     }
 
     /**

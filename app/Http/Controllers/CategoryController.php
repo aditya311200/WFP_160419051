@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Http\Request;
 use DB;
+use App\Product;
 
 class CategoryController extends Controller
 {
@@ -97,5 +98,23 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+
+    public function showCategory($category_name) 
+    {
+        // Method 1 : QueryBuilder
+        // $data = DB::table('categories')
+        //         ->join('products', 'categories.id', '=', 'products.category_id')
+        //         ->where('categories.nama', $category_name)
+        //         ->get();
+        // $result = $data;
+        // $getTotalData = DB::table('products')->count();
+
+        // Method 2 : Eloquent Model (with Relationship)
+        $data = Category::where('nama', $category_name)->first();
+        $result = $data->products;
+        $getTotalData = Product::count();
+
+        return view('reportProduct', compact('category_name', 'result', 'getTotalData'));
     }
 }

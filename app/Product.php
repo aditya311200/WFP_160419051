@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+    protected $table = 'products';
+
+    // nama fungsi category bebas, yang penting esensinya satu kategori
+    public function category() {
+        // parameter berisi namespace\namaModel;
+        return $this->belongsTo('App\Category', 'category_id');
+    }
 }

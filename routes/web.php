@@ -29,6 +29,8 @@ Route::get('/menu/{jenis?}/{tambahan?}', function ($jenis = 'roti', $tambahan = 
 Route::resource('products', 'ProductController');
 Route::resource('categories', 'CategoryController');
 
+Route::get('/report/showroti/{kategori}', 'CategoryController@showCategory')->name('reportShowCategory');
+
 // Route::resource('/produk', 'ProdukController');
 
 // Route::get('/produk', 'ProdukController@index');
