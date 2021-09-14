@@ -30,7 +30,7 @@ Route::resource('products', 'ProductController');
 Route::resource('categories', 'CategoryController');
 
 Route::get('/report/showroti/{kategori}', 'CategoryController@showCategory')->name('reportShowCategory');
-
+Route::get('/laporan/kategoriproduk', 'LaporanController@kategoriproduk')->name('laporan.kategoriproduk');
 // Route::resource('/produk', 'ProdukController');
 
 // Route::get('/produk', 'ProdukController@index');
