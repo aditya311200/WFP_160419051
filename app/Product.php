@@ -13,4 +13,9 @@ class Product extends Model
         // parameter berisi namespace\namaModel;
         return $this->belongsTo('App\Category', 'category_id');
     }
+
+    public function supplier() {
+        // parameter berisi namespace\namaModel;
+        return $this->belongsTo('App\Supplier', 'supplier_id');
+    }
 }

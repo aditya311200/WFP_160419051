@@ -1,26 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Ini Toko Roti</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
+@extends('layouts.conquer2')
 
-<body>
-    <div class="container">
-        <h2>Category Table</h2>
+@section('content')
+<div class="page-content">
+    <h3 class="page-title">
+        Daftar Kategori
+    </h3>
+
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="{{ route('welcome') }}">Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">Category</a>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height btn-primary" data-container="body" data-placement="bottom" data-original-title="Change dashboard date range">
+                <i class="icon-calendar"></i>&nbsp; <span class="thin uppercase visible-lg-inline-block"></span>&nbsp; <i class="fa fa-angle-down"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
         <p>Berikut List Kategori Roti yang Dijual :</p>
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nama Kategori</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,12 +38,10 @@
                     <tr>
                         <td>{{ $d->id }}</td>
                         <td>{{ $d->nama }}</td>
-                        <td>{{ $d->created_at }}</td>
-                        <td>{{ $d->updated_at }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-    </div>
-</body>
-</html>
+    </div> 
+</div>
+@endsection

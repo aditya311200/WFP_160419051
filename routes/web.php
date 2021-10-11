@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("welcome");
 
 Route::get('/menu', function () {
     $tambahan = ['coklat', 'keju', 'sosis'];
@@ -26,11 +26,16 @@ Route::get('/menu/{jenis?}/{tambahan?}', function ($jenis = 'roti', $tambahan = 
     return view('roti', ['jenis' => $jenis, 'tambahan' => $tambahan]);
 });
 
-Route::resource('products', 'ProductController');
+Route::resource('/listofproducts', 'ProductController');
 Route::resource('categories', 'CategoryController');
+Route::resource('suppliers', 'SupplierController');
 
 Route::get('/report/showroti/{kategori}', 'CategoryController@showCategory')->name('reportShowCategory');
 Route::get('/laporan/kategoriproduk', 'LaporanController@kategoriproduk')->name('laporan.kategoriproduk');
+
+Route::post('suppler/showinfo/', 'SupplierController@showInfo')->name('supplier.showinfo');
+Route::post('suppler/showAjax/', 'SupplierController@showAjax')->name('supplier.showmodal');
+
 // Route::resource('/produk', 'ProdukController');
 
 // Route::get('/produk', 'ProdukController@index');

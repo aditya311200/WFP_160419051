@@ -26,11 +26,11 @@ class ProductController extends Controller
 
         // cara 1 dengan isntaks compact. Berarti variabel queryBuilder nanti dikenali
         // pada Controller dan View
-        // return view('product.index', compact('queryBuilder'));
+        return view('product.index', compact('queryBuilder'));
 
         // cara 2 dengan sintaks array. Berarti variabel queryBuilder nanti hanya dikenali
         // pada Controller dan pada View namanya menjadi data
-        return view('product.index', ['data'=>$queryBuilder]);
+        // return view('product.index', ['data'=>$queryModel]);
     }
 
     /**
