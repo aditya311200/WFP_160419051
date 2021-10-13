@@ -510,6 +510,16 @@ License: You must have a valid license purchased only from themeforest(the above
 							<i class="icon-pin"></i>
 							Product</a>
 						</li>
+						<li>
+							<a href="{{ url('customers') }}">
+							<i class="icon-book-open"></i>
+							Customer</a>
+						</li>
+						<li>
+							<a href="{{ url('transactions') }}">
+							<i class="icon-anchor"></i>
+							Transaction</a>
+						</li>
 					</ul>
 				</li>
 			</ul>

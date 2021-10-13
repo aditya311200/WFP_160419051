@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Supplier;
+use App\Transaction;
 use Illuminate\Http\Request;
 use DB;
+use App\Customer;
+use App\User;
+use App\Product;
 
-class SupplierController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +18,10 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $queryBuilder = DB::table('suppliers')->get();
-        return view('supplier.index', ['data'=>$queryBuilder]);
+        // $queryBuilder = DB::table('transactions')->get();
+        $data = Transaction::all();
+
+        return view('transaction.index', compact('data'));
     }
 
     /**
@@ -43,10 +48,10 @@ class SupplierController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Supplier  $supplier
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Supplier $supplier)
+    public function show(Transaction $transaction)
     {
         //
     }
@@ -54,10 +59,10 @@ class SupplierController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Supplier  $supplier
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Supplier $supplier)
+    public function edit(Transaction $transaction)
     {
         //
     }
@@ -66,10 +71,10 @@ class SupplierController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Supplier  $supplier
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(Request $request, Transaction $transaction)
     {
         //
     }
@@ -77,32 +82,24 @@ class SupplierController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Supplier  $supplier
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Supplier $supplier)
+    public function destroy(Transaction $transaction)
     {
         //
-    }
-
-    public function showInfo() 
-    {
-        return response()->json(array(
-            'msg'=>'ini Function ShowInfo di SupplierController',
-            'status'=>'OKE'
-        ), 200);
     }
 
     public function showAjax(Request $request) 
     {
         $id = ($request->get('id'));
         
-        $data = Supplier::find($id);
+        $data = Transaction::find($id);
 
         $dataProduk = $data->products;
         
         return response()->json(array(
-            'message'=> view('supplier.showmodal', compact('data', 'dataProduk'))->render()
+            'msg'=> view('transaction.showmodal', compact('data', 'dataProduk'))->render()
         ), 200);
     }
 }
