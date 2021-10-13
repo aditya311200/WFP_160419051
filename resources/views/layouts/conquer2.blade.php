@@ -34,7 +34,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
 <link href="{{ asset('conquer2/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('conquer2/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset('conquer2/assets/plugins/jqvmap/jqvmap/jqvmap.css') }}" rel="stylesheet" type="text/css"/>
+<!-- <link href="{{ asset('conquer2/assets/plugins/jqvmap/jqvmap/jqvmap.css') }}" rel="stylesheet" type="text/css"/> -->
 <!-- END PAGE LEVEL PLUGIN STYLES -->
 <!-- BEGIN THEME STYLES -->
 <link href="{{ asset('conquer2/assets/css/style-conquer.css') }}" rel="stylesheet" type="text/css"/>
@@ -47,7 +47,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 
-@yield('ajaxQuery')
+@yield('ajaxquery')
 
 </head>
 <!-- END HEAD -->
@@ -549,13 +549,13 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="{{ asset ('conquer2/assets/plugins/uniform/jquery.uniform.min.js') }} " type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/jquery.vmap.js') }} " type="text/javascript"></script>
+<!-- <script src="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/jquery.vmap.js') }} " type="text/javascript"></script>
 <script src="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js') }} " type="text/javascript"></script>
 <script src="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js') }} " type="text/javascript"></script>
 <script src="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js') }} " type="text/javascript"></script>
 <script src="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js') }} " type="text/javascript"></script>
 <script src="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js') }} " type="text/javascript"></script>
-<script src="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js') }} " type="text/javascript"></script>
+<script src="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js') }} " type="text/javascript"></script> -->
 <script src="{{ asset ('conquer2/assets/plugins/jquery.peity.min.js') }} " type="text/javascript"></script>
 <script src="{{ asset ('conquer2/assets/plugins/jquery.pulsate.min.js') }} " type="text/javascript"></script>
 <script src="{{ asset ('conquer2/assets/plugins/jquery-knob/js/jquery.knob.js') }} " type="text/javascript"></script>
@@ -578,7 +578,7 @@ License: You must have a valid license purchased only from themeforest(the above
 jQuery(document).ready(function() {    
    App.init(); // initlayout and core plugins
    Index.init();
-   Index.initJQVMAP(); // init index page's custom scripts
+//    Index.initJQVMAP(); // init index page's custom scripts
    Index.initCalendar(); // init index page's custom scripts
    Index.initCharts(); // init index page's custom scripts
    Index.initChat();

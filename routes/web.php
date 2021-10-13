@@ -34,7 +34,7 @@ Route::get('/report/showroti/{kategori}', 'CategoryController@showCategory')->na
 Route::get('/laporan/kategoriproduk', 'LaporanController@kategoriproduk')->name('laporan.kategoriproduk');
 
 Route::post('supplier/showinfo/', 'SupplierController@showInfo')->name('supplier.showinfo');
-Route::post('supplier/showAjax/', 'SupplierController@showAjax')->name('supplier.showmodal');
+Route::post('supplier/showAjax/', 'SupplierController@showAjax')->name('supplier.showAjax');
 
 // Route::resource('/produk', 'ProdukController');
 

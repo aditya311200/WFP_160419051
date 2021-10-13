@@ -86,13 +86,13 @@
 	function getDetailData(id) {
 		$.ajax({
 			type:'POST',
-			url:"{{ route('supplier.showmodal') }}",
+			url:"{{ route('supplier.showAjax') }}",
 			data: {
                     '_token': '<?php echo csrf_token(); ?>',
                     'id': id,
                 },
 			success: function(data) {
-				$('#msg').html(data);
+				$('#msg').html(data.message);
 			}
 		});
 	}
