@@ -59,12 +59,13 @@
     </div> 
 </div>
 
+<!-- Modal -->
 <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
-    <div class="model-dialog">
+    <div class="modal-dialog" style="width: 60%">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">Modal Title</h4>
+                <h4 class="modal-title">Detail Supplier</h4>
             </div>
 
             <div class="modal-body" id="msg">
@@ -73,14 +74,30 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info">Save Change</button>
+                <!-- <button type="button" class="btn btn-info">Save changes</button> -->
             </div>
         </div>
     </div>
 </div>
 @endsection
 
-@section('ajaxQuery')
+@section('ajaxquery')
+<script>
+	function getDetailData(id) {
+		$.ajax({
+			type:'POST',
+			url:"{{ route('supplier.showmodal') }}",
+			data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'id': id,
+                },
+			success: function(data) {
+				$('#msg').html(data);
+			}
+		});
+	}
+</script>
+
 <script>
 	function showInfo() {
 		$.ajax({
@@ -89,22 +106,6 @@
 			data: {'_token': '<?php echo csrf_token(); ?>'},
 			success: function(data) {
 				$('#showinfo').html(data.msg);
-			}
-		});
-	}
-</script>
-
-<script>
-	function getDetailData(id) {
-		$.ajax({
-			type:'POST',
-			url:"{{ route('supplier.showmodal') }}",
-			data: {
-                    '_token': '<?php echo csrf_token(); ?>',
-                    'id': id
-                },
-			success: function(data) {
-				$('#msg').html(data.msg);
 			}
 		});
 	}

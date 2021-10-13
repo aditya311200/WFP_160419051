@@ -88,23 +88,21 @@ class SupplierController extends Controller
     public function showInfo() 
     {
         return response()->json(array(
-            'msg'=>'dar',
+            'msg'=>'ini Function ShowInfo di SupplierController',
             'status'=>'OKE'
         ), 200);
     }
 
     public function showAjax(Request $request) 
     {
-        $data = ($request->get('id'));
-
-        // ambil data supplier yang dituju
+        $data = $request->get('id');
+        
         $data = Supplier::find($data);
 
-        // ambil data product yang dipakai pada supplier tersebut
         $dataProduk = $data->products;
-
+        
         return response()->json(array(
-            'msg' => view('supplier.showmodal', compact('data', 'dataProduk'))->render()
+            'message'=> view('supplier.showmodal', compact('data', 'dataProduk'))->render()
         ), 200);
     }
 }

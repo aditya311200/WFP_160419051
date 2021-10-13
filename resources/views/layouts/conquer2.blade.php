@@ -26,26 +26,26 @@ License: You must have a valid license purchased only from themeforest(the above
 <meta name="MobileOptimized" content="320">
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/plugins/uniform/css/uniform.default.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/plugins/uniform/css/uniform.default.css') }}" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
-<link href="{{ asset ('conquer2/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet') }}" type="text/css"/>
+<link href="{{ asset('conquer2/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/plugins/jqvmap/jqvmap/jqvmap.css') }}" rel="stylesheet" type="text/css"/>
 <!-- END PAGE LEVEL PLUGIN STYLES -->
 <!-- BEGIN THEME STYLES -->
-<link href="{{ asset ('conquer2/assets/css/style-conquer.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/css/style.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/css/style-responsive.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/css/plugins.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/css/pages/tasks.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset ('conquer2/assets/css/themes/default.css') }}" rel="stylesheet" type="text/css" id="style_color"/>
-<link href="{{ asset ('conquer2/assets/css/custom.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/css/style-conquer.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/css/style.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/css/style-responsive.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/css/plugins.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/css/pages/tasks.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('conquer2/assets/css/themes/default.css') }}" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="{{ asset('conquer2/assets/css/custom.css') }}" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="{{ asset ('conquer2/favicon.ico') }}"/>
+<link rel="shortcut icon" href="favicon.ico"/>
 
 @yield('ajaxQuery')
 

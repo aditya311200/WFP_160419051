@@ -27,7 +27,7 @@
     <div class="container">
         <p>Berikut Produk yang dijual :</p>
         <div class="row">
-            @foreach($data as $d)
+            @foreach($queryBuilder as $d)
                 <div class="col-mb-4 col-sm-4">
                     <div class="card bg-" style="width: 18rem">
                         <img src="{{ asset('images/'.$d->image) }}" class="card-img-top" alt="..." style="width: 100%; height: 200px;">
