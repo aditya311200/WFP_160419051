@@ -26,7 +26,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('supplier.createform');
     }
 
     /**
@@ -37,7 +37,13 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Supplier();
+
+        //$data->[nama kolom pada db] = $request->get('[name dari input text]')
+        $data->nama = $request->get('nmSupplier');
+        $data->save();
+
+        return redirect()->route('suppliers.index')->with('status', 'Data Supplier berhasil ditambah');
     }
 
     /**

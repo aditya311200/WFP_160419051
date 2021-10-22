@@ -39,7 +39,6 @@ Route::post('supplier/showinfo/', 'SupplierController@showInfo')->name('supplier
 Route::post('supplier/showAjax/', 'SupplierController@showAjax')->name('supplier.showAjax');
 
 Route::post('transaction/showAjax/', 'TransactionController@showAjax')->name('transaction.showAjax');
-
 // Route::resource('/produk', 'ProdukController');
 
 // Route::get('/produk', 'ProdukController@index');

@@ -13,7 +13,10 @@
                             <p align="center"><b>{{ $dp->nama }}</b></p>
                             <hr>
                             <p>Kategori: {{ $dp->category->nama }} pieces</p>
-                            
+                            <hr>
+                            <p>Harga : Rp {{ $dp->pivot->harga_produk }}</p>   
+                            <hr>
+                            <p>Jumlah : {{$dp->pivot->quantity }}</p>
                         </div>
                     </div>
                 </div>
