@@ -6,7 +6,7 @@
         Create Supplier
     </h3>
 
-    <div class="page-bar">_
+    <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
@@ -37,12 +37,12 @@
             </div>
 
             <div class='panel-body'>
-                <form method="POST" action="{{ route('suppliers.store') }}">
+                <form method="POST" action="{{ route('suppliers.update', $data->id) }}">
                     <div class="form-group">
                         @csrf
+                        @method("PUT")
                         <label>Nama Supplier</label>
-                        <input type="text" class="form-control" name="nmSupplier">
-                        <small class="forn-text text-muted">Isikan Nama Supplier Anda</small>
+                        <input type="text" class="form-control" name="nmSupplier" value="{{ $data->nama }}">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

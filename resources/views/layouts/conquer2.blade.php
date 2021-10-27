@@ -496,9 +496,24 @@ License: You must have a valid license purchased only from themeforest(the above
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="{{ url('suppliers') }}">
-							<i class="icon-anchor"></i>
-							Supplier</a>
+							<a href="javascript:;">
+								<i class="icon-puzzle"></i>
+								<span class="title">Supplier</span>
+								<span class="arrow "></span>
+							</a>
+							<ul class="sub-menu">
+								<li>
+									<a href="{{ url('suppliers') }}">
+									<i class="icon-anchor"></i>
+									Show Data</a>
+								</li>
+								<li>
+									<a href="{{ route('suppliers.create') }}">
+									<i class="icon-anchor"></i>
+									Insert</a>
+								</li>
+								
+							</ul>
 						</li>
 						<li>
 							<a href="{{ url('categories') }}">

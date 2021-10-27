@@ -47,6 +47,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nama Supplier</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,7 +56,14 @@
                         <td>{{ $d->id }}</td>
                         <td>{{ $d->nama }}</td>
                         <td>
-                            <a class="btn btn-default" data-toggle="modal" href="#basic" onclick="getDetailData({{ $d->id }})">Show w/ AJAX</a>
+                            <a class="btn btn-warning" data-toggle="modal" href="#basic" onclick="getDetailData({{ $d->id }})">Show w/ AJAX</a>
+                            <a class="btn btn-success" href="{{ route('suppliers.edit', $d->id) }}">Edit</a>
+
+                            <form method="POST" action="{{ route('suppliers.destroy', $d->id) }}">
+                                @csrf    
+                                @method('DELETE')
+                                <input type="SUBMIT" class="btn btn-danger" value="Delete" onclick="if(!confirm('Apakah mau dihapus?')) {return false;}">
+                            </form>
                         </td>
                     </tr>
                 @endforeach

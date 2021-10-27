@@ -15,8 +15,14 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $queryBuilder = DB::table('suppliers')->get();
-        return view('supplier.index', ['data'=>$queryBuilder]);
+        // $queryBuilder = DB::table('suppliers')->get();
+
+        // $queryModel = Supplier::all();
+
+        // yang isi deleted_atnya ttp muncul
+        $queryModel = Supplier::withTrashed()->get();
+
+        return view('supplier.index', ['data'=>$queryModel]);
     }
 
     /**
@@ -65,7 +71,9 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
+        $data = $supplier;
+
+        return view('supplier.editform', compact('data'));
     }
 
     /**
@@ -77,7 +85,10 @@ class SupplierController extends Controller
      */
     public function update(Request $request, Supplier $supplier)
     {
-        //
+        $supplier->nama = $request->get('nmSupplier');
+        $supplier->save();
+
+        return redirect()->route('suppliers.index')->with('status', 'Data Supplier berhasil diubah');
     }
 
     /**
@@ -88,7 +99,49 @@ class SupplierController extends Controller
      */
     public function destroy(Supplier $supplier)
     {
-        //
+        // dd("masuk Destroy", $supplier);
+        // $supplier->delete();
+
+        // return redirect()->route('suppliers.index')->with('status', 'Data Supplier berhasil dihapus');
+
+        try {
+            $supplier->delete();
+
+            return redirect()->route('suppliers.index')->with('status', 'Data Supplier berhasil dihapus');
+        } catch(\PDOExeption $e) {
+            $msg = "Data Gagal dihapus. Pastikan data child sudah hilang atau tidak berhubungan.";
+
+            // hapus sama childnya
+            // $msg = $this->handleAllRemoveChild($supplier);
+
+            // pindahin supplier
+            // $msg = $this->handleChildWithDefault($supplier);
+            
+            return redirect()->route('suppliers.index')->with('error', $msg);
+        }
+    }
+    
+    // products dipindah suppliernya baru di delete suppliernya
+    private function handleChildWithDefault($s) 
+    {
+        $ps = $s->products();
+        $alternatif = Supplier::where('id', '<>', $s->$id)->first();
+
+        foreach($ps as $p) {
+            $p->supplier_id = ($alternatif)->id;
+            $p->save();
+        }
+
+        $s->delete();
+    }
+
+    // function untuk hapus supplier dan productsnya
+    private function handleAllRemoveChild($s)
+    {
+        $s->products()->delete();
+        $s->delete();
+
+        return "Data dihapus beserta data yang berinteraksi dengan Product : $s->nama";
     }
 
     public function showInfo() 
