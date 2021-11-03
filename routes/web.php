@@ -39,6 +39,11 @@ Route::post('supplier/showinfo/', 'SupplierController@showInfo')->name('supplier
 Route::post('supplier/showAjax/', 'SupplierController@showAjax')->name('supplier.showAjax');
 
 Route::post('transaction/showAjax/', 'TransactionController@showAjax')->name('transaction.showAjax');
+
+Route::post('/supplier/getEditForm', 'SupplierController@getEditForm')->name('supplier.getEditForm');
+Route::post('/supplier/getEditForm2', 'SupplierController@getEditForm')->name('supplier.getEditForm2');
+Route::post('/supplier/saveData', 'SupplierController@saveData')->name('supplier.saveData');
+Route::post('/supplier/deleteData', 'SupplierController@deleteData')->name('supplier.deleteData');
 // Route::resource('/produk', 'ProdukController');
 
 // Route::get('/produk', 'ProdukController@index');

@@ -25,7 +25,9 @@
            
         </ul>
         <div class="page-toolbar">
-            <a type="button" class="btn btn-fit-height default" href="{{ route('suppliers.create') }}">+ New Supplier</a>
+            <a class="btn btn-info" href="{{ route('suppliers.create') }}">+ New Supplier</a>
+
+            <a class="btn btn-info" data-toggle="modal" href="#createform">+ New Supplier (Modal)</a>
         </div>
     </div>
 
@@ -52,18 +54,25 @@
             </thead>
             <tbody>
                 @foreach($data as $d) 
-                    <tr>
+                    <tr id="tr_{{ $d->id }}">
                         <td>{{ $d->id }}</td>
-                        <td>{{ $d->nama }}</td>
+                        <td id="td_name_{{ $d->id }}">{{ $d->nama }}</td>
                         <td>
-                            <a class="btn btn-warning" data-toggle="modal" href="#basic" onclick="getDetailData({{ $d->id }})">Show w/ AJAX</a>
+                            <a class="btn btn-warning" data-toggle="modal" href="#basic" onclick="getDetailData( {{ $d->id }} )">Show w/ AJAX</a>
+
                             <a class="btn btn-success" href="{{ route('suppliers.edit', $d->id) }}">Edit</a>
+
+                            <a class="btn btn-primary" href="#modalEdit" data-toggle="modal" onclick="getEditForm( {{ $d->id }} )">+ Edit A</a>
+
+                            <a class="btn btn-info" href="#modalEdit" data-toggle="modal" onclick="getEditForm2( {{ $d->id }} )">+ Edit B</a>
 
                             <form method="POST" action="{{ route('suppliers.destroy', $d->id) }}">
                                 @csrf    
                                 @method('DELETE')
                                 <input type="SUBMIT" class="btn btn-danger" value="Delete" onclick="if(!confirm('Apakah mau dihapus?')) {return false;}">
                             </form>
+
+                            <a class="btn btn-danger" onclick="deleteDataRemoveTR( {{ $d->id }} )">Delete 2</a>
                         </td>
                     </tr>
                 @endforeach
@@ -74,7 +83,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
-    <div class="modal-dialog" style="width: 60%">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
@@ -92,6 +101,54 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="createform" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Add New Supplier</h4>
+            </div>
+
+            <div class="modal-body" id="msgCreateForm">
+                <form method="POST" action="{{ route('suppliers.store') }}">
+                    <div class="form-group">
+                        @csrf
+                        <label>Nama Supplier</label>
+                        <input type="text" class="form-control" name="nmSupplier">
+                        <small class="form-text text-muted">Isikan Nama Supplier Anda</small>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info">Save Changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalEdit" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Detail Supplier</h4>
+            </div>
+
+            <div class="modal-body" id="modalContent">
+                <!-- isi modal -->
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-info">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Modal -->
 @endsection
 
 @section('ajaxquery')
@@ -104,6 +161,7 @@
                     '_token': '<?php echo csrf_token(); ?>',
                     'id': id,
                 },
+
 			success: function(data) {
 				$('#msg').html(data.message);
 			}
@@ -117,10 +175,90 @@
 			type:'POST',
 			url:"{{ route('supplier.showinfo') }}",
 			data: {'_token': '<?php echo csrf_token(); ?>'},
+
 			success: function(data) {
 				$('#showinfo').html(data.msg);
 			}
 		});
 	}
+</script>
+
+<script>
+    function getEditForm(id) {
+        $.ajax({
+            type:'POST',
+			url:"{{ route('supplier.getEditForm') }}",
+			data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'id': id,
+                },
+
+			success: function(data) {
+				$('#modalContent').html(data.msg);
+			}
+        })
+    }
+</script>
+
+<script>
+    function getEditForm2(id) {
+        $.ajax({
+            type:'POST',
+			url:"{{ route('supplier.getEditForm2') }}",
+			data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'id': id,
+                },
+
+			success: function(data) {
+				$('#modalContent').html(data.msg);
+			}
+        })
+    }
+</script>
+
+<script>
+    function saveDataUpdateTD(id) {
+        var eName = $('#eName').val();
+        
+        $.ajax({
+            type:'POST',
+			url:"{{ route('supplier.saveData') }}",
+			data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'id': id,
+                    'nama': eName,
+                },
+
+			success: function(data) {
+				if(data.status == 'ok') {
+                    alert(data.msg)
+                    $('#td_name_'+id).html(eName);
+                }
+			}
+        });
+    }
+</script>
+
+<script>
+    function deleteDataRemoveTR(id) {
+        $.ajax ({
+            type: 'POST',
+            url: '{{ route("supplier.deleteData") }}',
+            data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'id': id,
+                },
+
+			success: function(data) {
+				if(data.status == 'ok') {
+                    alert(data.msg)
+                    $('#tr_' + id).remove();
+                } else {
+                    alert(data.msg)
+                }
+			}
+        })
+    }
 </script>
 @endsection

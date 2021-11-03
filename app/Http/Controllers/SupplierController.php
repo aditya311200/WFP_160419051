@@ -164,4 +164,58 @@ class SupplierController extends Controller
             'message'=> view('supplier.showmodal', compact('data', 'dataProduk'))->render()
         ), 200);
     }
+
+    public function getEditForm(Request $request) 
+    {
+        $id = $request->get('id');
+        $data = Supplier::find($id);
+
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => view('supplier.editmodalA', compact('data'))->render()
+        ), 200);
+    }
+
+    public function getEditForm2(Request $request) 
+    {
+        $id = $request->get('id');
+        $data = Supplier::find($id);
+
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => view('supplier.editmodalB', compact('data'))->render()
+        ), 200);
+    }
+
+    public function saveData(Request $request)
+    {
+        $id = $request->get('id');
+        $Supplier = Supplier::find($id);
+        $Supplier->nama = $request->get('nama');
+        $Supplier->save();
+
+        return response()->json(array(
+            'status' => 'ok',
+            'msg' => 'supplier data updated'
+        ), 200);
+    }
+
+    public function deleteData(Request $request)
+    {
+        try {
+            $id = $request->get('id');
+            $Supplier = Supplier::find($id);
+            $Supplier->delete();
+
+            return response()->json(array(
+                'status' => 'ok',
+                'msg' => 'Supplier data deleted'
+            ), 200);
+        } catch(\PDOException $e) {
+            return response()->json(array(
+                'status' => 'error',
+                'msg' => 'Supplier is not deleted. It may be used in the product'
+            ), 200);
+        }
+    }
 }
