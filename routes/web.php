@@ -28,22 +28,24 @@ Route::get('/menu/{jenis?}/{tambahan?}', function ($jenis = 'roti', $tambahan = 
 
 Route::resource('products', 'ProductController');
 Route::resource('categories', 'CategoryController');
-Route::resource('suppliers', 'SupplierController');
 Route::resource('customers', 'CustomerController');
 Route::resource('transactions', 'TransactionController');
 
 Route::get('/report/showroti/{kategori}', 'CategoryController@showCategory')->name('reportShowCategory');
 Route::get('/laporan/kategoriproduk', 'LaporanController@kategoriproduk')->name('laporan.kategoriproduk');
 
-Route::post('supplier/showinfo/', 'SupplierController@showInfo')->name('supplier.showinfo');
-Route::post('supplier/showAjax/', 'SupplierController@showAjax')->name('supplier.showAjax');
-
 Route::post('transaction/showAjax/', 'TransactionController@showAjax')->name('transaction.showAjax');
 
-Route::post('/supplier/getEditForm', 'SupplierController@getEditForm')->name('supplier.getEditForm');
-Route::post('/supplier/getEditForm2', 'SupplierController@getEditForm')->name('supplier.getEditForm2');
-Route::post('/supplier/saveData', 'SupplierController@saveData')->name('supplier.saveData');
-Route::post('/supplier/deleteData', 'SupplierController@deleteData')->name('supplier.deleteData');
+Route::middleware(['auth'])->group(function(){
+    Route::post('supplier/showinfo/', 'SupplierController@showInfo')->name('supplier.showinfo');
+    Route::post('supplier/showAjax/', 'SupplierController@showAjax')->name('supplier.showAjax');
+    Route::post('/supplier/getEditForm', 'SupplierController@getEditForm')->name('supplier.getEditForm');
+    Route::post('/supplier/getEditForm2', 'SupplierController@getEditForm')->name('supplier.getEditForm2');
+    Route::resource('suppliers', 'SupplierController');
+    Route::post('/supplier/saveData', 'SupplierController@saveData')->name('supplier.saveData');
+    Route::post('/supplier/deleteData', 'SupplierController@deleteData')->name('supplier.deleteData');
+});
+
 // Route::resource('/produk', 'ProdukController');
 
 // Route::get('/produk', 'ProdukController@index');
@@ -71,3 +73,6 @@ Route::post('/supplier/deleteData', 'SupplierController@deleteData')->name('supp
 //     return view('welcome', ['name' => $name]);
 // })->name("showgreeting");
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

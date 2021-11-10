@@ -66,13 +66,15 @@
 
                             <a class="btn btn-info" href="#modalEdit" data-toggle="modal" onclick="getEditForm2( {{ $d->id }} )">+ Edit B</a>
 
-                            <form method="POST" action="{{ route('suppliers.destroy', $d->id) }}">
-                                @csrf    
-                                @method('DELETE')
-                                <input type="SUBMIT" class="btn btn-danger" value="Delete" onclick="if(!confirm('Apakah mau dihapus?')) {return false;}">
-                            </form>
+                            @can('delete-permission')
+                                <form method="POST" action="{{ route('suppliers.destroy', $d->id) }}">
+                                    @csrf    
+                                    @method('DELETE')
+                                    <input type="SUBMIT" class="btn btn-danger" value="Delete" onclick="if(!confirm('Apakah mau dihapus?')) {return false;}">
+                                </form>
 
-                            <a class="btn btn-danger" onclick="deleteDataRemoveTR( {{ $d->id }} )">Delete 2</a>
+                                <a class="btn btn-danger" onclick="deleteDataRemoveTR( {{ $d->id }} )">Delete 2</a>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

@@ -104,6 +104,8 @@ class SupplierController extends Controller
 
         // return redirect()->route('suppliers.index')->with('status', 'Data Supplier berhasil dihapus');
 
+        $this->authorize('delete-permission');
+
         try {
             $supplier->delete();
 
