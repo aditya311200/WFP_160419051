@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name("welcome");
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name("welcome");
 
 Route::get('/menu', function () {
     $tambahan = ['coklat', 'keju', 'sosis'];
@@ -36,6 +36,10 @@ Route::get('/laporan/kategoriproduk', 'LaporanController@kategoriproduk')->name(
 
 Route::post('transaction/showAjax/', 'TransactionController@showAjax')->name('transaction.showAjax');
 
+Route::get('/', 'ProductController@front_index');
+Route::get('cart', 'ProductController@cart');
+Route::get('add-to-cart/{id}', 'ProductController@addToCart');
+
 Route::middleware(['auth'])->group(function(){
     Route::post('supplier/showinfo/', 'SupplierController@showInfo')->name('supplier.showinfo');
     Route::post('supplier/showAjax/', 'SupplierController@showAjax')->name('supplier.showAjax');
@@ -44,7 +48,15 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('suppliers', 'SupplierController');
     Route::post('/supplier/saveData', 'SupplierController@saveData')->name('supplier.saveData');
     Route::post('/supplier/deleteData', 'SupplierController@deleteData')->name('supplier.deleteData');
+
+    Route::post('/supplier/saveDataField', 'SupplierController@saveDataField')->name('supplier.saveDataField');
+    Route::post('/supplier/changeLogo', 'SupplierController@changeLogo')->name('supplier.changeLogo');
+
+    Route::get('/checkout', 'TransactionController@form_submit_front');
+    Route::get('/submit_checkout', 'TransactionController@submit_front')->name('submitCheckout');
 });
+
+
 
 // Route::resource('/produk', 'ProdukController');
 

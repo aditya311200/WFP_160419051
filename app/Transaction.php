@@ -17,6 +17,18 @@ class Transaction extends Model
     }
 
     public function products() {
-        return $this->belongsToMany('App\Product', 'product_transaction', 'transaction_id', 'product_id')->withPivot('quantity', 'harga_produk');
+        return $this->belongsToMany('App\Product', 'product_transaction', 'transaction_id', 'product_id')->withPivot('quantity', 'harga_produk', 'subtotal');
+    }
+
+    public function insertProduct($cart, $user) {
+        $total = 0;
+
+        foreach($cart as $id => $detail)
+        {
+            $total += $detail['price'] * $detail['quantity'];
+            $this->products()->attach($id, ['quantity' => $detail['quantity'], 'subtotal' => $detail['price']]);
+        }
+
+        return $total;
     }
 }

@@ -10,7 +10,7 @@
         <ul class="page-breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="{{ route('welcome') }}">Home</a>
+                <a href="{{ route('home') }}">Home</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
@@ -37,12 +37,17 @@
             </div>
 
             <div class='panel-body'>
-                <form method="POST" action="{{ route('suppliers.store') }}">
+                <form method="POST" action="{{ route('suppliers.store') }}" enctype="multipart/form-data">
                     <div class="form-group">
                         @csrf
                         <label>Nama Supplier</label>
                         <input type="text" class="form-control" name="nmSupplier">
                         <small class="forn-text text-muted">Isikan Nama Supplier Anda</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Logo</label>
+                        <input type="file" class="form-control" id="logo" name="logo">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

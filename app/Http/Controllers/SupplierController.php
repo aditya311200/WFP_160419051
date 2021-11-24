@@ -45,6 +45,13 @@ class SupplierController extends Controller
     {
         $data = new Supplier();
 
+        $file = $request->file('logo');
+        $imgFolder = 'images';
+        $imgFile = time()."-".$file->getClientOriginalName();
+        $file->move($imgFolder, $imgFile);
+
+        $data->logo = $imgFile;
+
         //$data->[nama kolom pada db] = $request->get('[name dari input text]')
         $data->nama = $request->get('nmSupplier');
         $data->save();
@@ -219,5 +226,35 @@ class SupplierController extends Controller
                 'msg' => 'Supplier is not deleted. It may be used in the product'
             ), 200);
         }
+    }
+
+    public function saveDataField(Request $request) 
+    {
+        $id = $request->get('id');
+        $fname = $request->get('fname');
+        $value = $request->get('value');
+
+        $Supplier = Supplier::find($id);
+        $Supplier->$fname = $value;
+        $Supplier->save();
+
+        return response()->json(array(
+            'status'=>'ok',
+            'msg'=>'supplier data updated',
+        ), 200);
+    }
+
+    public function changeLogo(Request $request){
+        $id = $request->get('id');
+        $file = $request->file('logo');
+        $imgFolder = 'images';
+        $imgFile = time().$file->getClientOriginalName();
+        $file->move($imgFolder, $imgFile);
+
+        $supplier = Supplier::find($id);
+        $supplier->logo = $imgFile;
+        $supplier->save();
+
+        return redirect()->route('suppliers.index')->with('status', 'Supplier logo is changed');
     }
 }

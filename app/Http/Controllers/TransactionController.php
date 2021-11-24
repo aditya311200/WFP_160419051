@@ -8,6 +8,8 @@ use DB;
 use App\Customer;
 use App\User;
 use App\Product;
+use Auth;
+use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
@@ -53,7 +55,7 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        //
+        return view('transaction.show', compact('transaction'));
     }
 
     /**
@@ -101,5 +103,32 @@ class TransactionController extends Controller
         return response()->json(array(
             'msg'=> view('transaction.showmodal', compact('data', 'dataProduk'))->render()
         ), 200);
+    }
+
+    public function form_submit_front()
+    {
+        $this->authorize('checkmember');
+        return view('frontend.checkout');
+    }
+
+    public function submit_front()
+    {
+        $this->authorize('checkmember');
+
+        $cart = session()->get('cart');
+        $user = Auth::user();
+
+        $t = new Transaction;
+        $t->customer_id = 1;
+        $t->user_id = $user->id;
+        $t->transaction_date = Carbon::now()->toDateTimeString();
+        $t->save();
+
+        $totalharga = $t->insertProduct($cart, $user);
+        $t->total = $totalharga;
+        $t->save();
+
+        session()->forget('cart');
+        return redirect('home');
     }
 }

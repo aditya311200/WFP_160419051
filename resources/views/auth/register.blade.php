@@ -72,6 +72,11 @@
 
                                 <input type="radio" id='pegawai' name='sebagai' value='pegawai'>
                                 <label for="pegawai">Pegawai</label>
+
+                                <br>
+
+                                <input type="radio" id='member' name='sebagai' value='member'>
+                                <label for="member">Member</label>
                             </div>
                         </div>
 

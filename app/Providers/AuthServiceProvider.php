@@ -33,5 +33,6 @@ class AuthServiceProvider extends ServiceProvider
 
         // 2nd Gate with Policy
         Gate::define('delete-permission', 'App\Policies\SupplierPolicy@delete');
+        Gate::define('checkmember', 'App\Policies\MemberPolicy@checkmember');
     }
 }

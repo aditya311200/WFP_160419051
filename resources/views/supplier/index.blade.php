@@ -16,7 +16,7 @@
         <ul class="page-breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="{{ route('welcome') }}">Home</a>
+                <a href="{{ route('home') }}">Home</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
@@ -49,6 +49,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nama Supplier</th>
+                    <th>Logo</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -56,7 +57,42 @@
                 @foreach($data as $d) 
                     <tr id="tr_{{ $d->id }}">
                         <td>{{ $d->id }}</td>
-                        <td id="td_name_{{ $d->id }}">{{ $d->nama }}</td>
+                        <td class="editable" id="td_nama_{{ $d->id }}">{{ $d->nama }}</td>
+                        <td>
+                            <img src="{{ asset('images/'.$d->logo) }}" alt="...">
+
+                            <div class="modal fade" id="modalChange_{{ $d->id }}" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form role="form" method="POST" action="{{ route('supplier.changeLogo') }}" enctype="multipart/form-data">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+
+                                                <h4 class="modal-title">Change Logo</h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label>Logo</label>
+                                                    <input type="file" class="form-control" id="logo" name="logo"/>
+                                                    <input type="hidden" id="id" name="id" value="{{ $d->id }}"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-info">Submit</button>
+                                                <a data-dismiss='modal' class='btn btn-default'>Cancel</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>  
+
+                            <br>
+                            <a href="#modalChange_{{ $d->id }}" data-toggle='modal' class='btn btn-xs btn-default'>Change</a>
+                        </td>
+
                         <td>
                             <a class="btn btn-warning" data-toggle="modal" href="#basic" onclick="getDetailData( {{ $d->id }} )">Show w/ AJAX</a>
 
@@ -262,5 +298,35 @@
 			}
         })
     }
+</script>
+@endsection
+
+@section('initialscript')
+<script>
+    $('.editable').editable({
+        closeOnEnter : true,
+        callback:function(data){
+            if(data.content){
+                var s_id = data.$el[0].id
+                var fname = s_id.split('_')[1]
+                var id = s_id.split('_')[2]
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route("supplier.saveDataField") }}',
+                    data: {
+                        '_token': '<?php echo csrf_token() ?>',
+                        'id': id,
+                        'fname': fname,
+                        'value': data.content
+                    },
+
+                    success: function(data) {
+                        alert(data.msg)
+                    }
+                });
+            }
+        }
+    });
 </script>
 @endsection

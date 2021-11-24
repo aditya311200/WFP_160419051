@@ -492,7 +492,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					</form>
 				</li>
 				<li class="start active ">
-					<a href="{{ route('welcome') }}">
+					<a href="{{ route('home') }}">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					<span class="selected"></span>
@@ -582,6 +582,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="{{ asset ('conquer2/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }} " type="text/javascript"></script>
 <script src="{{ asset ('conquer2/assets/plugins/jquery.blockui.min.js') }} " type="text/javascript"></script>
 <script src="{{ asset ('conquer2/assets/plugins/uniform/jquery.uniform.min.js') }} " type="text/javascript"></script>
+<script src="{{ asset ('conquer2/assets/plugins/jquery.editable.min.js') }}" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <!-- <script src="{{ asset ('conquer2/assets/plugins/jqvmap/jqvmap/jquery.vmap.js') }} " type="text/javascript"></script>
@@ -624,6 +625,8 @@ jQuery(document).ready(function() {
    Tasks.initDashboardWidget();
 });
 </script>
+
+@yield('initialscript')
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
